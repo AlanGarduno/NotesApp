@@ -20,11 +20,12 @@ public class Note {
     public Note(){
         
         this.texto = new SimpleStringProperty("");
-        this.resumen = new SimpleStringProperty();
+        this.resumen = new SimpleStringProperty("Nueva nota");
         
         texto.addListener((ObservableValue<? extends String> av, String oldValue, String newValue) ->{
         
                 this.resumen.set(texto.get().substring(0,Math.min(texto.get().length(),20) ) );
+                System.out.println(resumen);
         });
     }
     
