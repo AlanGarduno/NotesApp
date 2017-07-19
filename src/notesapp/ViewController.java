@@ -7,7 +7,11 @@ package notesapp;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 
 /**
  * FXML Controller class
@@ -16,6 +20,15 @@ import javafx.fxml.Initializable;
  */
 public class ViewController implements Initializable {
 
+    
+    @FXML private Button btnDelete,btnAdd;
+    @FXML private TextArea ContenidoPrincipal;
+    @FXML private ListView ListaDeNotas;
+    
+    
+    
+    
+    private Note nota_actual; 
     /**
      * Initializes the controller class.
      */
