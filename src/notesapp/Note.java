@@ -16,6 +16,7 @@ import javafx.beans.value.ObservableValue;
 public class Note {
     
     public SimpleStringProperty texto, resumen;
+    public int position;
     
     public Note(){
         

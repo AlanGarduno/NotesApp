@@ -29,7 +29,7 @@ public class ViewController implements Initializable {
     
     @FXML private Button btnDelete,btnAdd;
     @FXML private TextArea ContenidoPrincipal;
-    @FXML private ListView ListaNotas;
+    @FXML private ListView<String> ListaNotas;
     
     private List<Note> notas;
     private List<String> resumen_de_notas;
@@ -47,20 +47,55 @@ public class ViewController implements Initializable {
         propiedades_resumen_de_notas = new SimpleListProperty<>(FXCollections.observableArrayList(resumen_de_notas));
         ListaNotas.itemsProperty().bind(propiedades_resumen_de_notas);
         
-        
-        nuevaNota();
+          btnDelete.setOnAction(event -> {
+            
+            //int i = (-1);
+            for(int i=nota_actual.position+1;i<notas.size();i++){
+                Note note = notas.get(i);
+                note.position = notas.get(i).position - 1;
+            }
+            notas.remove(nota_actual);
+            propiedades_resumen_de_notas.remove(nota_actual.position);
+            if(notas.size() == 0){
+                nuevaNota();
+            }else{
+                nota_actual = notas.get(0);
+            }
+            selectNote();
+            
+        });
         
         ContenidoPrincipal.textProperty().addListener((ObservableValue<? extends String> av, String oldValue, String newValue) ->{
         
                nota_actual.change(newValue);
+               propiedades_resumen_de_notas.set(nota_actual.position,nota_actual.resumen());
         });
+        
+        
+        
+       btnAdd.setOnAction(event -> nuevaNota());
+        
+        ListaNotas.setOnMouseClicked(event -> {
+            int index = ListaNotas.getSelectionModel().getSelectedIndex();
+            nota_actual = notas.get(index);
+            selectNote();
+        });
+        
+        
+        nuevaNota();
     }    
     
     public void nuevaNota(){
          nota_actual = new Note();
          notas.add(nota_actual);
+         nota_actual.position = notas.size() -1;
         propiedades_resumen_de_notas.add(nota_actual.resumen());
+        selectNote();
         
+    }
+    
+    public void selectNote(){
+       ContenidoPrincipal.setText(nota_actual.get());
     }
     
 }
