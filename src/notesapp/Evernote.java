@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package notesapp;
+import com.evernote.auth.EvernoteService;
+import com.evernote.auth.EvernoteAuth;
+import com.evernote.clients.*;
 
 /**
  *
@@ -12,6 +15,25 @@ package notesapp;
 public class Evernote {
     
     
-    
+    public Evernote(String token)  throws Exception {
+        
+        EvernoteAuth evernoteAuth = new EvernoteAuth( EvernoteService.SANDBOX, token);
+        ClientFactory factory = new ClientFactory(evernoteAuth);
+        UserStoreClient user = factory.createUserStoreClient();
+        
+        boolean version_r = user.checkVersion("Evernote EDAMDemo (Java)",
+                com.evernote.edam.userstore.Constants.EDAM_VERSION_MAJOR, 
+                com.evernote.edam.userstore.Constants.EDAM_VERSION_MINOR);
+        
+        
+        
+       if(!version_r)
+       {
+           System.err.println("No es posible establecer una conexion");
+           System.exit(1);
+       }
+        System.out.println("Conexion Exitosa");
+        
+    }
     
 }

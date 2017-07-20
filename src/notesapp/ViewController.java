@@ -37,6 +37,8 @@ public class ViewController implements Initializable {
     private ListProperty<String> propiedades_resumen_de_notas;
     
     private Note nota_actual; 
+    
+    private final String token = "S=s1:U=93df9:E=164b528cdd0:C=15d5d779f78:P=1cd:A=en-devtoken:V=2:H=b5f0ceca2dcd67cb05dc8a378e195fe8";
     /**
      * Initializes the controller class.
      */
@@ -83,7 +85,17 @@ public class ViewController implements Initializable {
         
         
         nuevaNota();
+        initEvernote();
     }    
+    
+    public void initEvernote(){
+        try{
+        Evernote evernote = new Evernote(this.token);
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+    }
     
     public void nuevaNota(){
          nota_actual = new Note();
