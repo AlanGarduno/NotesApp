@@ -27,7 +27,7 @@ import javafx.scene.control.TextArea;
 public class ViewController implements Initializable {
 
     
-    @FXML private Button btnDelete,btnAdd;
+    @FXML private Button btnDelete,btnAdd,btnSync;
     @FXML private TextArea ContenidoPrincipal;
     @FXML private ListView<String> ListaNotas;
     
@@ -39,6 +39,8 @@ public class ViewController implements Initializable {
     private Note nota_actual; 
     
     private final String token = "S=s1:U=93df9:E=164b528cdd0:C=15d5d779f78:P=1cd:A=en-devtoken:V=2:H=b5f0ceca2dcd67cb05dc8a378e195fe8";
+   
+    private Evernote evernote;
     /**
      * Initializes the controller class.
      */
@@ -83,14 +85,14 @@ public class ViewController implements Initializable {
             selectNote();
         });
         
-        
+        btnSync.setOnAction(event -> createNote());
         nuevaNota();
         initEvernote();
     }    
     
     public void initEvernote(){
         try{
-        Evernote evernote = new Evernote(this.token);
+         this.evernote = new Evernote(this.token);
         }
         catch(Exception e){
             System.out.println(e);
@@ -110,4 +112,13 @@ public class ViewController implements Initializable {
        ContenidoPrincipal.setText(nota_actual.get());
     }
     
+    public void createNote(){
+         try{
+            this.evernote.CreateNote(nota_actual);
+            }
+        catch(Exception e){
+            System.out.println(e);
+        }
+        
+    }
 }

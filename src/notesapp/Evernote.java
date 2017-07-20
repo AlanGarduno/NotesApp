@@ -7,6 +7,7 @@ package notesapp;
 import com.evernote.auth.EvernoteService;
 import com.evernote.auth.EvernoteAuth;
 import com.evernote.clients.*;
+import com.evernote.edam.type.*;
 
 /**
  *
@@ -14,6 +15,7 @@ import com.evernote.clients.*;
  */
 public class Evernote {
     
+    private NoteStoreClient noteStore;
     
     public Evernote(String token)  throws Exception {
         
@@ -33,6 +35,25 @@ public class Evernote {
            System.exit(1);
        }
         System.out.println("Conexion Exitosa");
+        this.noteStore = factory.createNoteStoreClient();
+        
+    }
+    
+    
+    public void CreateNote(Note currentNote) throws Exception{
+        com.evernote.edam.type.Note note = new  com.evernote.edam.type.Note();
+        note.setTitle("Nuevo Titulo");
+        note.setContent(createContent("Content"));
+        
+        this.noteStore.createNote(note);
+    }
+    
+    private String createContent( String content  ){
+        return "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
+                +"<!DOCTYPE en-note SYSTEM \"http://xml.evernote.com/pub/enml2.dtd\">"
+                +"<en-note>"
+                +"<p>"+ content + "</p>"
+                +"</en-note>";
         
     }
     
