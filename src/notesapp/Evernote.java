@@ -42,8 +42,8 @@ public class Evernote {
     
     public void CreateNote(Note currentNote) throws Exception{
         com.evernote.edam.type.Note note = new  com.evernote.edam.type.Note();
-        note.setTitle("Nuevo Titulo");
-        note.setContent(createContent("Content"));
+        note.setTitle(currentNote.resumen());
+        note.setContent(createContent(currentNote.get()));
         
         this.noteStore.createNote(note);
     }
