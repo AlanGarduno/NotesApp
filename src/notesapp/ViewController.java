@@ -61,7 +61,7 @@ public class ViewController implements Initializable {
             notas.remove(nota_actual);
             propiedades_resumen_de_notas.remove(nota_actual.position);
             if(notas.size() == 0){
-                nuevaNota();
+                nuevaNota(null);
             }else{
                 nota_actual = notas.get(0);
             }
@@ -77,7 +77,7 @@ public class ViewController implements Initializable {
         
         
         
-       btnAdd.setOnAction(event -> nuevaNota());
+       btnAdd.setOnAction(event -> nuevaNota(null));
         
         ListaNotas.setOnMouseClicked(event -> {
             int index = ListaNotas.getSelectionModel().getSelectedIndex();
@@ -86,8 +86,9 @@ public class ViewController implements Initializable {
         });
         
         btnSync.setOnAction(event -> createNote());
-        nuevaNota();
+        nuevaNota(null);
         initEvernote();
+        getNotes();
     }    
     
     public void initEvernote(){
@@ -99,8 +100,8 @@ public class ViewController implements Initializable {
         }
     }
     
-    public void nuevaNota(){
-         nota_actual = new Note();
+    public void nuevaNota(Note new_note){
+         nota_actual = new_note == null ?  new Note(): new_note;
          notas.add(nota_actual);
          nota_actual.position = notas.size() -1;
         propiedades_resumen_de_notas.add(nota_actual.resumen());
@@ -114,11 +115,25 @@ public class ViewController implements Initializable {
     
     public void createNote(){
          try{
-            this.evernote.CreateNote(nota_actual);
+             if(nota_actual.is_new())
+                this.evernote.CreateNote(nota_actual);
+             else
+                 this.evernote.UpdateNote(nota_actual);
             }
         catch(Exception e){
             System.out.println(e);
         }
         
+    }
+    
+    public void getNotes(){
+        try{
+            for(Note note:this.evernote.GetNotes()){
+                this.nuevaNota(note);
+            }
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
     }
 }
