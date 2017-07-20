@@ -51,23 +51,7 @@ public class ViewController implements Initializable {
         propiedades_resumen_de_notas = new SimpleListProperty<>(FXCollections.observableArrayList(resumen_de_notas));
         ListaNotas.itemsProperty().bind(propiedades_resumen_de_notas);
         
-          btnDelete.setOnAction(event -> {
-            
-            //int i = (-1);
-            for(int i=nota_actual.position+1;i<notas.size();i++){
-                Note note = notas.get(i);
-                note.position = notas.get(i).position - 1;
-            }
-            notas.remove(nota_actual);
-            propiedades_resumen_de_notas.remove(nota_actual.position);
-            if(notas.size() == 0){
-                nuevaNota(null);
-            }else{
-                nota_actual = notas.get(0);
-            }
-            selectNote();
-            
-        });
+          btnDelete.setOnAction(event -> deleteNote());
         
         ContenidoPrincipal.textProperty().addListener((ObservableValue<? extends String> av, String oldValue, String newValue) ->{
         
@@ -135,5 +119,36 @@ public class ViewController implements Initializable {
         catch(Exception e){
             System.out.println(e);
         }
+    }
+    
+    public void deleteNote(){
+        
+        if(!this.nota_actual.is_new()){
+            deleteNoteEvernote(nota_actual);
+        }
+       //int i = (-1);
+         for(int i=nota_actual.position+1;i<notas.size();i++){
+            Note note = notas.get(i);
+            note.position = notas.get(i).position - 1;
+        }
+        notas.remove(nota_actual);
+        propiedades_resumen_de_notas.remove(nota_actual.position);
+        if(notas.size() == 0){
+            nuevaNota(null);
+        }else{
+            nota_actual = notas.get(0);
+        }
+            selectNote();    
+    }
+    
+    private void deleteNoteEvernote(Note note){
+         Runnable task =() ->{
+             try{
+                this.evernote.DeleteNote(nota_actual.get_guid());
+             }catch(Exception e){
+                 System.out.println(e);
+             }
+         };
+         task.run();
     }
 }

@@ -70,10 +70,15 @@ public class Evernote {
             String title = notes.getTitle();
             
             
-            finalList.add( new Note(message,title)  );
+            finalList.add( new Note(message,title,note.getGuid())  );
         }
         
         return finalList;
+        
+    }
+    
+    public void DeleteNote(String guid) throws Exception{
+        this.noteStore.deleteNote(guid);
         
     }
     

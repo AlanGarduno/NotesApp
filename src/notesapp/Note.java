@@ -32,10 +32,10 @@ public class Note {
         });
     }
     
-    public Note(String content, String title){
+    public Note(String content, String title,String guid){
         this.texto = new SimpleStringProperty(content);
         this.resumen = new SimpleStringProperty(title);
-        this.guid = "";
+        this.guid = guid;
          texto.addListener((ObservableValue<? extends String> av, String oldValue, String newValue) ->{
         
                 this.resumen.set(texto.get().substring(0,Math.min(texto.get().length(),20) ) );
