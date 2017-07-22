@@ -45,7 +45,7 @@ public class Evernote {
     
     public void CreateNote(Note currentNote) throws Exception{
         com.evernote.edam.type.Note note = new  com.evernote.edam.type.Note();
-        note.setTitle(currentNote.resumen());
+        note.setTitle(currentNote.getTitle());
         note.setContent(createContent(currentNote.get()));
         
        com.evernote.edam.type.Note new_note = this.noteStore.createNote(note);
@@ -55,7 +55,7 @@ public class Evernote {
     
     public void UpdateNote( Note currentNote ) throws Exception {
         com.evernote.edam.type.Note note = this.noteStore.getNote(currentNote.get_guid(), true, false, false, false);
-        note.setTitle("Test");
+        note.setTitle(currentNote.getTitle());
         note.setContent(createContent( currentNote.get() ));
         this.noteStore.updateNote(note);
     }
@@ -96,5 +96,6 @@ public class Evernote {
         int p2 =xml.indexOf("</p>");
         return xml.substring(p1,p2);
     }
+   
     
 }

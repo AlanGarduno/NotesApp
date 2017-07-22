@@ -13,9 +13,11 @@ import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 
@@ -30,6 +32,7 @@ public class ViewController implements Initializable {
     @FXML private Button btnDelete,btnAdd,btnSync;
     @FXML private TextArea ContenidoPrincipal;
     @FXML private ListView<String> ListaNotas;
+    @FXML private Label lblMessage;
     
     private List<Note> notas;
     private List<String> resumen_de_notas;
@@ -69,10 +72,11 @@ public class ViewController implements Initializable {
             selectNote();
         });
         
-        btnSync.setOnAction(event -> createNote());
+        btnSync.setOnAction(event -> syncNotes());
         nuevaNota(null);
         initEvernote();
         getNotes();
+        lblMessage.setText("GARCOH");
     }    
     
     public void initEvernote(){
@@ -97,17 +101,37 @@ public class ViewController implements Initializable {
        ContenidoPrincipal.setText(nota_actual.get());
     }
     
-    public void createNote(){
-         try{
-             if(nota_actual.is_new())
-                this.evernote.CreateNote(nota_actual);
-             else
-                 this.evernote.UpdateNote(nota_actual);
-            }
-        catch(Exception e){
-            System.out.println(e);
-        }
+    public void syncNotes(){
+        Task <Void> task = new Task<Void>(){
+           @Override public Void  call() throws InterruptedException{
+               updateMessage("Sincornizando...");
+               for(Note note:notas){
+                    try{
+                        if(note.is_new()){
+                           evernote.CreateNote(note);
+                        }
+                        else if(note.is_valid()){
+                            evernote.UpdateNote(note);
+                        }      
+                     }catch(Exception e){
+                        System.out.println(e);
+                    }
+               }
+               updateMessage("Sincornizado");
+               Thread.sleep(4000);
+               return null;
+           }
+        };
         
+        task.setOnSucceeded(e -> {
+                this.lblMessage.textProperty().unbind();
+                this.lblMessage.setText("GARCOH");
+                
+         });
+        this.lblMessage.textProperty().bind(task.messageProperty());
+
+        Thread thread = new Thread(task);
+        thread.start();
     }
     
     public void getNotes(){
