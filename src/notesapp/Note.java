@@ -20,6 +20,7 @@ public class Note {
     private String guid;
     private String oldText;
     
+    
     public Note(){
         
         this.texto = new SimpleStringProperty("");

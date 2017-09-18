@@ -29,6 +29,6 @@
          </font>
       </Button>
       <Button fx:id="btnSync" layoutX="427.0" layoutY="2.0" mnemonicParsing="false" style="-fx-background-color: #14b8dd;" text="Sync" textFill="WHITE" />
-      <Label fx:id="lblMessage" layoutX="214.0" layoutY="6.0" prefHeight="17.0" prefWidth="85.0" text="Label" />
+      <Label fx:id="lblMessage" layoutX="214.0" layoutY="6.0" prefHeight="17.0" prefWidth="85.0" />
    </children>
 </AnchorPane>
