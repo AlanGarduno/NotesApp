@@ -7,7 +7,11 @@ package notesapp;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
@@ -16,12 +20,24 @@ import javafx.fxml.Initializable;
  */
 public class InicioSesionController implements Initializable {
 
+    @FXML private TextField txtMail;
+    @FXML private PasswordField txtPassword;
+    @FXML private Button btnIniciar,btnSalir,btnRegistro;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+         btnIniciar.setOnAction(event -> iniciarSesion("",""));
+    }
+
+    public void iniciarSesion(String mail, String pass){
+        
+    }
+    
+    public void salir(){
+        
+    }
     
 }

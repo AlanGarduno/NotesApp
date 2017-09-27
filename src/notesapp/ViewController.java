@@ -51,7 +51,8 @@ public class ViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         resumen_de_notas = new ArrayList<>();
         notas = new ArrayList<>();
-        propiedades_resumen_de_notas = new SimpleListProperty<>(FXCollections.observableArrayList(resumen_de_notas));
+        propiedades_resumen_de_notas = new SimpleListProperty<>(
+                FXCollections.observableArrayList(resumen_de_notas));
         ListaNotas.itemsProperty().bind(propiedades_resumen_de_notas);
         
           btnDelete.setOnAction(event -> deleteNote());
