@@ -19,8 +19,7 @@ public class Usuario {
         
     }
 
-    public Usuario(int id, String correo, String pass) {
-        this.id = id;
+    public Usuario(String correo, String pass) {
         this.correo = correo;
         this.pass = pass;
     }
@@ -49,12 +48,24 @@ public class Usuario {
         this.pass = pass;
     }
     
-    public void InsertarUsuario(){
+    //Para el registro de los usuarios
+    public void registrarUsuario(){
+        
+    }
+    //Para el inicio de sesion
+    public void iniciarSesion(){
         
     }
     
-    public void ConsultarUsuario(){
+    //Para consulat un usuario
+    public void consultarUsuario(){
         
+    }
+    
+    public boolean comprabarPassword(){
+        if(this.pass.length() <= 6)
+            return false;
+        return true;
     }
     
     
