@@ -37,7 +37,9 @@ public class InicioSesionController implements Initializable {
     }
 
     public void iniciarSesion(String mail, String pass){
-       user = new Usuario(mail,pass);
+       if(mail == "user" && pass == "123")
+            System.out.println("Hola");
+        System.out.println("Adios");
        //Falta metodo para iniciar sesion en Usuario
     }
     

@@ -14,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -26,16 +27,17 @@ public class TestViews extends Application {
     
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../notesapp/ViewLogin.fxml"));
-        
-        Parent page = loader.load(); 
-        
-        Scene scene = new Scene(page);
-        
-        primaryStage.setScene(scene);
-        primaryStage.initStyle(StageStyle.UNDECORATED);
-        primaryStage.show();
-        
+        try{
+            Parent root = FXMLLoader.load(getClass().getResource("../notesapp/ViewLogin.fxml"));
+            Scene scene = new Scene(root);
+            primaryStage.setScene(scene);
+            primaryStage.initStyle(StageStyle.UNDECORATED);
+            primaryStage.show();
+
+        }catch(Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 
     /**

@@ -9,25 +9,29 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="432.0" prefWidth="773.0" style="-fx-background-color: #20120f;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="notesapp.ViewLogInController">
+<AnchorPane id="AnchorPane" prefHeight="432.0" prefWidth="773.0" style="-fx-background-color: #20120f;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="notesapp.ViewLogInController">
    <children>
       <AnchorPane layoutX="441.0" layoutY="65.0" prefHeight="352.0" prefWidth="286.0" style="-fx-background-color: #9c2B27;">
          <children>
-            <JFXTextField focusColor="#1855ab" layoutX="39.0" layoutY="94.0" prefHeight="25.0" prefWidth="202.0" promptText="Correo electronico" unFocusColor="WHITE">
+            <JFXTextField fx:id="txtCorreo" focusColor="#1855ab" layoutX="39.0" layoutY="94.0" prefHeight="25.0" prefWidth="202.0" promptText="Correo electronico" unFocusColor="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </JFXTextField>
-            <JFXPasswordField focusColor="#1855ab" layoutX="42.0" layoutY="194.0" prefHeight="25.0" prefWidth="202.0" promptText="Contraseña" unFocusColor="WHITE">
+            <JFXPasswordField fx:id="txtPass" focusColor="#1855ab" layoutX="42.0" layoutY="194.0" prefHeight="25.0" prefWidth="202.0" promptText="Contraseña" unFocusColor="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </JFXPasswordField>
-            <JFXButton layoutX="18.0" layoutY="283.0" prefHeight="25.0" prefWidth="250.0" style="-fx-background-color: #E45652;" text="Iniciar" textFill="#fcf6f6" />
+            <JFXButton fx:id="btnIniciar" layoutX="18.0" layoutY="283.0" onAction="#iniciarSesion" prefHeight="25.0" prefWidth="250.0" style="-fx-background-color: #E45652;" text="Iniciar" textFill="#fcf6f6" />
             <Label layoutX="69.0" layoutY="32.0" prefHeight="17.0" prefWidth="161.0" text="Inicio de Sesión" textFill="#fffefe">
                <font>
                   <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblError" layoutX="42.0" layoutY="68.0" prefHeight="17.0" prefWidth="202.0" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
                </font>
             </Label>
          </children>
@@ -47,7 +51,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <JFXButton layoutX="42.0" layoutY="362.0" prefHeight="25.0" prefWidth="250.0" style="-fx-background-color: #E45652;" text="¡Registrate!" textFill="#fcf6f6" />
+      <JFXButton fx:id="btnRegistrar" layoutX="42.0" layoutY="362.0" prefHeight="25.0" prefWidth="250.0" style="-fx-background-color: #E45652;" text="¡Registrate!" textFill="#fcf6f6" />
       <Label layoutX="737.0" onMouseClicked="#handleClose" text="X" textFill="WHITE">
          <font>
             <Font size="36.0" />
