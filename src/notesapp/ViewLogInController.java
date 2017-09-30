@@ -58,9 +58,9 @@ public class ViewLogInController implements Initializable {
     la logica de loggeo
     */
     @FXML
-    private void iniciarSesion(  ) throws IOException{
+    private void iniciarSesion( ActionEvent event ) throws IOException{
      try{
-        if(txtCorreo.getText().equals("user") && txtPass.getText().equals("123")){
+        if("123".equals(txtPass.getText()) && txtCorreo.getText().equals("user")){
             //((Node)event.getSource()).getScene().getWindow().hide(); //Hide this view
             Stage primaryStage = new Stage();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("View.fxml"));
