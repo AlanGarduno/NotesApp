@@ -7,7 +7,9 @@ package notesapp;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -19,6 +21,11 @@ public class ViewLogInController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    //Metoto que se usa para cerrar la aplicacion, por medio de un evento
+    @FXML
+    private void handleClose( MouseEvent event ){
+        System.exit(0);
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

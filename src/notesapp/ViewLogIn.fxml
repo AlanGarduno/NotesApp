@@ -10,16 +10,16 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane id="AnchorPane" prefHeight="432.0" prefWidth="698.0" style="-fx-background-color: #20120f;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="notesapp.ViewLogInController">
+<AnchorPane id="AnchorPane" prefHeight="432.0" prefWidth="773.0" style="-fx-background-color: #20120f;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="notesapp.ViewLogInController">
    <children>
-      <AnchorPane layoutX="389.0" layoutY="47.0" prefHeight="352.0" prefWidth="286.0" style="-fx-background-color: #9c2B27;">
+      <AnchorPane layoutX="441.0" layoutY="65.0" prefHeight="352.0" prefWidth="286.0" style="-fx-background-color: #9c2B27;">
          <children>
             <JFXTextField focusColor="#1855ab" layoutX="39.0" layoutY="94.0" prefHeight="25.0" prefWidth="202.0" promptText="Correo electronico" unFocusColor="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </JFXTextField>
-            <JFXPasswordField focusColor="#1855ab" layoutX="42.0" layoutY="194.0" prefHeight="25.0" prefWidth="202.0" promptText="Contraseña" unFocusColor="#ddd4d4">
+            <JFXPasswordField focusColor="#1855ab" layoutX="42.0" layoutY="194.0" prefHeight="25.0" prefWidth="202.0" promptText="Contraseña" unFocusColor="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
@@ -48,5 +48,10 @@
          </font>
       </Label>
       <JFXButton layoutX="42.0" layoutY="362.0" prefHeight="25.0" prefWidth="250.0" style="-fx-background-color: #E45652;" text="¡Registrate!" textFill="#fcf6f6" />
+      <Label layoutX="737.0" onMouseClicked="#handleClose" text="X" textFill="WHITE">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
