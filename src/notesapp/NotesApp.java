@@ -15,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  *
@@ -24,14 +25,11 @@ public class NotesApp extends Application {
     
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("View.fxml"));
-        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ViewLogIn.fxml"));
         Parent page = loader.load(); 
-        
         Scene scene = new Scene(page);
-        
+        primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setScene(scene);
-        
         primaryStage.show();
         
     }

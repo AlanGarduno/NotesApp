@@ -11,6 +11,8 @@ import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -48,6 +50,14 @@ public class ViewLogInController implements Initializable {
         // TODO
         txtCorreo = new JFXTextField();
         txtPass = new JFXPasswordField();
+        btnIniciar = new JFXButton();
+        btnIniciar.setOnAction(event -> {
+            try {
+                iniciarSesion();
+            } catch (IOException ex) {
+                Logger.getLogger(ViewLogInController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
     }
 
     //Metodos para la funcionalidd de los botones
@@ -58,9 +68,13 @@ public class ViewLogInController implements Initializable {
     la logica de loggeo
     */
     @FXML
-    private void iniciarSesion( ActionEvent event ) throws IOException{
+    private void iniciarSesion(  ) throws IOException{
      try{
-        if("123".equals(txtPass.getText()) && txtCorreo.getText().equals("user")){
+         String mail = txtCorreo.getText();
+         String pass = txtPass.getText();  
+         System.out.println(mail);
+         System.out.println(pass);
+        if(pass.equals("123") && mail.equals("user")){
             //((Node)event.getSource()).getScene().getWindow().hide(); //Hide this view
             Stage primaryStage = new Stage();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("View.fxml"));
@@ -70,11 +84,17 @@ public class ViewLogInController implements Initializable {
             primaryStage.show();
         }
         else{
-            System.out.println(txtCorreo.getText());
-            System.out.println(txtPass.getText());
+            System.out.println(mail);
+            System.out.println(pass);
             lblError.setText("Correo o contraseña incorrectos");
+             Stage primaryStage = new Stage();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("View.fxml"));
+            Parent page = loader.load();         
+            Scene scene = new Scene(page);
+            primaryStage.setScene(scene);
+            primaryStage.show();
         }
-        }catch(Exception e){
+        }catch(IOException e){
             System.out.println(e);
         }
     }
