@@ -32,9 +32,9 @@ public class ViewSingInController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    private JFXButton btnAtras, btnRegistro;
-    private JFXTextField txtCorreo;
-    private JFXPasswordField txtPass, txtConfPass;
+    @FXML private JFXButton btnAtras, btnRegistro;
+    @FXML private JFXTextField txtCorreo;
+    @FXML private JFXPasswordField txtPass, txtConfPass;
     
     @FXML
     private void handleClose( MouseEvent event ){
@@ -43,9 +43,11 @@ public class ViewSingInController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
+        btnRegistro.setOnAction(event -> registrar());
     }
     @FXML
-    private void registrar(ActionEvent event){
+    private void registrar(){
         
     }
     @FXML

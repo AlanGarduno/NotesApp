@@ -11,8 +11,6 @@ import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -36,9 +34,9 @@ public class ViewLogInController implements Initializable {
      * Initializes the controller class.
      */
     //Variables de la vista
-    private JFXButton btnIniciar, btnRegistrar;
-    private JFXTextField txtCorreo;
-    private JFXPasswordField txtPass;
+    @FXML private JFXButton btnIniciar, btnRegistrar;
+    @FXML private JFXTextField txtCorreo;
+    @FXML private JFXPasswordField txtPass;
     @FXML 
     private Label lblError;
     //Metodo que se usa para cerrar la aplicacion, por medio de un evento
@@ -49,8 +47,6 @@ public class ViewLogInController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        txtCorreo = new JFXTextField();
-        txtPass = new JFXPasswordField();
         btnIniciar = new JFXButton();
     }
 
@@ -64,27 +60,18 @@ public class ViewLogInController implements Initializable {
     @FXML
     private void btnIniciar( ActionEvent  event  ) throws IOException{
      try{
-         String mail = txtCorreo.getText().toString();
-         String pass = txtPass.getText().toString();  
-         System.out.println(mail);
-         System.out.println(pass);
-        if(mail == null && pass == null){
-            lblError.setText("Valores nulos");
-        }
-        if( mail.equals("user") && pass.equals("123")){
+        if( txtCorreo.getText().equals("user") && txtPass.getText().equals("123")){
             ((Node)event.getSource()).getScene().getWindow().hide(); //Hide this view
             Stage primaryStage = new Stage();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("View.fxml"));
             Parent page = loader.load();         
             Scene scene = new Scene(page);
+            primaryStage.initStyle(StageStyle.UNDECORATED);
             primaryStage.setScene(scene);
             primaryStage.show();
         }
         else{
-            System.out.println(mail);
-            System.out.println(pass);
             lblError.setText("Correo o contraseña incorrectos");
-            
             }
         }catch(IOException e){
             System.out.println(e);
