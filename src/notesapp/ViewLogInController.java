@@ -23,6 +23,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  * FXML Controller class
@@ -51,13 +52,6 @@ public class ViewLogInController implements Initializable {
         txtCorreo = new JFXTextField();
         txtPass = new JFXPasswordField();
         btnIniciar = new JFXButton();
-        btnIniciar.setOnAction(event -> {
-            try {
-                iniciarSesion();
-            } catch (IOException ex) {
-                Logger.getLogger(ViewLogInController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        });
     }
 
     //Metodos para la funcionalidd de los botones
@@ -68,14 +62,17 @@ public class ViewLogInController implements Initializable {
     la logica de loggeo
     */
     @FXML
-    private void iniciarSesion(  ) throws IOException{
+    private void btnIniciar( ActionEvent  event  ) throws IOException{
      try{
-         String mail = txtCorreo.getText();
-         String pass = txtPass.getText();  
+         String mail = txtCorreo.getText().toString();
+         String pass = txtPass.getText().toString();  
          System.out.println(mail);
          System.out.println(pass);
-        if(pass.equals("123") && mail.equals("user")){
-            //((Node)event.getSource()).getScene().getWindow().hide(); //Hide this view
+        if(mail == null && pass == null){
+            lblError.setText("Valores nulos");
+        }
+        if( mail.equals("user") && pass.equals("123")){
+            ((Node)event.getSource()).getScene().getWindow().hide(); //Hide this view
             Stage primaryStage = new Stage();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("View.fxml"));
             Parent page = loader.load();         
@@ -87,13 +84,8 @@ public class ViewLogInController implements Initializable {
             System.out.println(mail);
             System.out.println(pass);
             lblError.setText("Correo o contraseña incorrectos");
-             Stage primaryStage = new Stage();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("View.fxml"));
-            Parent page = loader.load();         
-            Scene scene = new Scene(page);
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        }
+            
+            }
         }catch(IOException e){
             System.out.println(e);
         }
@@ -101,8 +93,16 @@ public class ViewLogInController implements Initializable {
     /*Metodo goToRegistro
     Método que envia al formulario de registro
     */
-    private void goToRegistro(){
-        
+    @FXML
+    private void goToRegistro( ActionEvent event  ) throws IOException{
+            ((Node)event.getSource()).getScene().getWindow().hide(); //Hide this view
+            Stage primaryStage = new Stage();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ViewSingIn.fxml"));
+            Parent page = loader.load();         
+            Scene scene = new Scene(page);
+            primaryStage.initStyle(StageStyle.UNDECORATED); //Sin bordes
+            primaryStage.setScene(scene);
+            primaryStage.show();
     }
     
    

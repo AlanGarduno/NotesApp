@@ -9,13 +9,12 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="notesapp.ViewController">
+<AnchorPane id="AnchorPane" prefHeight="462.0" prefWidth="696.0" style="-fx-background-color: #D8D8D8;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="notesapp.ViewController">
    <children>
-      <ListView fx:id="ListaNotas" prefHeight="400.0" prefWidth="193.0" />
-      <TextArea fx:id="ContenidoPrincipal" layoutX="193.0" layoutY="33.0" prefHeight="367.0" prefWidth="414.0" />
-      <Button fx:id="btnDelete" layoutX="542.0" layoutY="2.0" mnemonicParsing="false" style="-fx-background-color: #e70c0c;" text="Delete" textFill="#f5f5f5" />
-      <Button fx:id="btnAdd" layoutX="545.0" layoutY="332.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="45.0" style="-fx-background-color: #77ee17; -fx-background-radius: 50;" text="+">
+      <ListView fx:id="ListaNotas" prefHeight="462.0" prefWidth="193.0" style="-fx-background-color: #BDBDBD;" />
+      <TextArea fx:id="ContenidoPrincipal" layoutX="193.0" layoutY="33.0" prefHeight="429.0" prefWidth="501.0" style="-fx-background-color: #BDBDBD;" />
+      <Button fx:id="btnDelete" layoutX="574.0" layoutY="2.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="108.0" style="-fx-background-color: #DF0101;" text="Delete" textFill="#f5f5f5" />
+      <Button fx:id="btnAdd" layoutX="637.0" layoutY="402.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="45.0" style="-fx-background-color: #FFFF00; -fx-background-radius: 50;" text="+">
          <textFill>
             <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
                <stops>
@@ -28,7 +27,7 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="btnSync" layoutX="427.0" layoutY="2.0" mnemonicParsing="false" style="-fx-background-color: #14b8dd;" text="Sync" textFill="WHITE" />
-      <Label fx:id="lblMessage" layoutX="214.0" layoutY="6.0" prefHeight="17.0" prefWidth="85.0" />
+      <Button fx:id="btnSync" layoutX="394.0" layoutY="2.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="116.0" style="-fx-background-color: #04B404;" text="Sync" textFill="WHITE" />
+      <Label fx:id="lblMessage" layoutX="214.0" layoutY="6.0" prefHeight="17.0" prefWidth="85.0" textFill="WHITE" />
    </children>
 </AnchorPane>
