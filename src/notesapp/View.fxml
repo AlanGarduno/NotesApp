@@ -13,7 +13,7 @@
    <children>
       <ListView fx:id="ListaNotas" prefHeight="462.0" prefWidth="193.0" style="-fx-background-color: #BDBDBD;" />
       <TextArea fx:id="ContenidoPrincipal" layoutX="193.0" layoutY="33.0" prefHeight="429.0" prefWidth="501.0" style="-fx-background-color: #BDBDBD;" />
-      <Button fx:id="btnDelete" layoutX="574.0" layoutY="2.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="108.0" style="-fx-background-color: #DF0101;" text="Delete" textFill="#f5f5f5" />
+      <Button fx:id="btnDelete" layoutX="489.0" layoutY="2.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="108.0" style="-fx-background-color: #DF0101;" text="Delete" textFill="#f5f5f5" />
       <Button fx:id="btnAdd" layoutX="637.0" layoutY="402.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="45.0" style="-fx-background-color: #FFFF00; -fx-background-radius: 50;" text="+">
          <textFill>
             <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
@@ -27,7 +27,12 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="btnSync" layoutX="394.0" layoutY="2.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="116.0" style="-fx-background-color: #04B404;" text="Sync" textFill="WHITE" />
-      <Label fx:id="lblMessage" layoutX="214.0" layoutY="6.0" prefHeight="17.0" prefWidth="85.0" textFill="WHITE" />
+      <Button fx:id="btnSync" layoutX="328.0" layoutY="2.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="116.0" style="-fx-background-color: #04B404;" text="Sync" textFill="WHITE" />
+      <Label fx:id="lblMessage" layoutX="214.0" layoutY="6.0" prefHeight="17.0" prefWidth="85.0" />
+      <Label layoutX="667.0" layoutY="-3.0" onMouseClicked="#handleClose" text="X">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

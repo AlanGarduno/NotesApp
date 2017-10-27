@@ -20,6 +20,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -47,6 +48,10 @@ public class ViewController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    @FXML
+    private void handleClose( MouseEvent event ){
+        System.exit(0);
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         resumen_de_notas = new ArrayList<>();
